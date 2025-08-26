@@ -67,14 +67,28 @@
 
   <p class="muted">Next: build a funnel in PostHog (sign_up → onboarding_started → onboarding_completed → first_value).</p>
 
-  <a id="cta" href="CHECKOUT_URL" class="button" rel="noopener">Get Starter Pack</a>
+  <a id="cta" class="button"
+     href="https://productparty.lemonsqueezy.com/buy/27dc0e16-21c9-46c3-8a9d-82e7348d8817"
+     rel="noopener">Get the Starter Pack — $49</a>
+
   <script>
-    document.getElementById('cta').addEventListener('click', function () {
-      posthog.capture('sign_up',
-        { source: 'landing', plan: 'free' },
-        { transport: 'sendBeacon', send_instantly: true }
-      );
-    });
+    // Track the click and keep UTMs when sending to Lemon Squeezy
+    (function () {
+      const cta = document.getElementById('cta');
+      const qs  = new URLSearchParams(location.search);
+      const u   = new URL(cta.href);
+      ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(k=>{
+        if (qs.get(k)) u.searchParams.set(k, qs.get(k));
+      });
+      cta.href = u.toString();
+
+      cta.addEventListener('click', function () {
+        posthog.capture('sign_up',
+          { source: 'landing', plan: 'starter_pack' },
+          { transport: 'sendBeacon', send_instantly: true }
+        );
+      });
+    })();
   </script>
 
   <!-- Dashboard section - uncomment when you have your PostHog public dashboard URL -->

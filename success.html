@@ -3,32 +3,30 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Thanks — You’re In</title>
-  <!-- PostHog snippet (same as index.html) -->
+  <title>Thanks — You're In</title>
+  <style>body{font-family:system-ui,Segoe UI,Inter,Arial,sans-serif;max-width:720px;margin:40px auto;padding:0 16px;line-height:1.5}</style>
+
+  <!-- Same PostHog snippet you used on index.html -->
   <script>
   !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){
     function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}
-    (p=t.createElement("script")).type="text/javascript",p.async=!0,
-    p.src="https://us.i.posthog.com/static/array.js",
-    (r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);
-    var u=e;void 0!==a?u=e[a]=[]:a="posthog";u.people=u.people||[];
+    (p=t.createElement("script")).type="text/javascript",p.async=!0,p.src="https://us.i.posthog.com/static/array.js",
+    (r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;void 0!==a?u=e[a]=[]:a="posthog";u.people=u.people||[];
     u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e};
-    u.people.toString=function(){return u.toString(1)+".people (stub)"},
+    u.people.toString=function(){return u.toString(1)+".people (stub)"};
     o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing opt_in_capturing has_opted_out_capturing reset isFeatureEnabled onFeatureFlags group".split(" ");
     for(n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-  posthog.init('phc_3ACn7GrUe4Qzji0iXMvm7dmyL3XDx7G36SfUH9TQ4il', { api_host: 'https://us.i.posthog.com', capture_pageview:true });
+  posthog.init('phc_3ACn7GrUe4Qzji0iXMvm7dmyL3XDx7G36SfUH9TQ4il', { api_host:'https://us.i.posthog.com', capture_pageview:true });
   posthog.register({ project_env:'test', project_id:211328 });
   </script>
-  <style>body{font-family:system-ui,Segoe UI,Inter,Arial,sans-serif;max-width:720px;margin:40px auto;padding:0 16px;line-height:1.5}</style>
 </head>
 <body>
   <h1>You're in 🎉</h1>
-  <p>Check your email for the Activation Starter Pack. You can also <a href="/">go back to the landing</a>.</p>
-
+  <p>Your Activation Starter Pack is on the way. <a href="/index.html">Back to Activation</a></p>
   <script>
-    // Record "first_value" when someone hits the success page
-    // (Use the checkout provider’s redirect to land here.)
-    posthog.capture('first_value', { value_type: 'purchase', time_from_signup: null }, { transport:'sendBeacon', send_instantly:true });
+    // Count a successful purchase as first value
+    posthog.capture('first_value', { value_type:'purchase', source:'lemon_squeezy' },
+      { transport:'sendBeacon', send_instantly:true });
   </script>
 </body>
 </html>
