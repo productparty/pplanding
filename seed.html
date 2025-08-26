@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Seed Events</title>
+  <style>
+    body{font-family:system-ui,Segoe UI,Inter,Arial,sans-serif;max-width:760px;margin:40px auto;padding:0 16px;line-height:1.5}
+    button{padding:10px 14px;border:1px solid #ddd;border-radius:10px;background:#fff;margin:6px 6px 0 0;cursor:pointer}
+  </style>
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){
+      function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}
+      (p=t.createElement("script")).type="text/javascript",p.async=!0,
+      p.src="https://us.i.posthog.com/static/array.js",
+      (r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);
+      var u=e;void 0!==a?u=e[a]=[]:a="posthog";u.people=u.people||[];
+      u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e};
+      u.people.toString=function(){return u.toString(1)+".people (stub)"};
+      o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing opt_in_capturing has_opted_out_capturing reset isFeatureEnabled onFeatureFlags group".split(" ");
+      for(n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    
+    posthog.init('phc_3ACn7GrUe4Qzji0iXMvm7dmyL3XDx7G36SfUH9TQ4il', {
+      api_host: 'https://us.i.posthog.com',
+      capture_pageview: true
+    });
+    
+    posthog.register({ project_env: 'test', project_id: 211328 });
+  </script>
+</head>
+<body>
+  <h1>Seed Events</h1>
+  <p>Click these buttons to generate demo events in PostHog:</p>
+  
+  <button onclick="posthog.identify('user_'+Math.floor(Math.random()*1e6),{plan:'free',source:'seed'})">Identify</button>
+  <button onclick="posthog.capture('sign_up',{source:'seed',plan:'free'})">sign_up</button>
+  <button onclick="posthog.capture('onboarding_started',{step:'profile'})">onboarding_started</button>
+  <button onclick="posthog.capture('onboarding_completed',{time_to_complete:120})">onboarding_completed</button>
+  <button onclick="posthog.capture('first_value',{value_type:'demo',time_from_signup:3})">first_value</button>
+  <button onclick="posthog.capture('habit_action',{count_7d:1,count_28d:1})">habit_action</button>
+  
+  <p style="margin-top:24px">
+    <button onclick="
+      const id='user_seed_'+Date.now();
+      posthog.reset();posthog.identify(id,{plan:'free',source:'seed'});
+      posthog.capture('sign_up',{source:'seed',plan:'free'});
+      setTimeout(()=>posthog.capture('onboarding_started',{step:'profile'}),500);
+      setTimeout(()=>posthog.capture('onboarding_completed',{time_to_complete:120}),1000);
+      setTimeout(()=>posthog.capture('first_value',{value_type:'demo',time_from_signup:3}),1500);
+      setTimeout(()=>posthog.capture('habit_action',{count_7d:1,count_28d:1}),2300);
+    ">Fire full journey</button>
+  </p>
+  
+  <p><a href="/index.html">← Back to Activation</a></p>
+</body>
+</html>

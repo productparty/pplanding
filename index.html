@@ -6,8 +6,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <style>
     body{font-family:system-ui,Segoe UI,Inter,Arial,sans-serif;max-width:760px;margin:40px auto;padding:0 16px;line-height:1.5}
-    button{padding:10px 14px;border:1px solid #ddd;border-radius:10px;background:#fff;margin:6px 6px 0 0;cursor:pointer}
+    button,a.button{padding:10px 14px;border:1px solid #ddd;border-radius:10px;background:#fff;margin:6px 6px 0 0;cursor:pointer;text-decoration:none;display:inline-block}
     .muted{color:#666}
+    iframe{border:1px solid #eee;border-radius:8px;width:100%;height:720px}
+    .section{margin:32px 0}
   </style>
 
 <script>
@@ -65,19 +67,27 @@
 
   <p class="muted">Next: build a funnel in PostHog (sign_up → onboarding_started → onboarding_completed → first_value).</p>
 
-  <button id="cta">Get Starter Pack</button>
+  <a id="cta" href="CHECKOUT_URL" class="button" rel="noopener">Get Starter Pack</a>
   <script>
-    document.getElementById('cta').addEventListener('click', function (e) {
-      e.preventDefault();
+    document.getElementById('cta').addEventListener('click', function () {
       posthog.capture('sign_up',
         { source: 'landing', plan: 'free' },
         { transport: 'sendBeacon', send_instantly: true }
       );
-      // tiny delay just in case the browser can't beacon immediately
-      setTimeout(() => { window.location.href = 'YOUR_CHECKOUT_URL'; }, 150);
     });
   </script>
-  
+
+  <section id="dashboard" class="section">
+    <h2>Activation dashboard (live)</h2>
+    <iframe src="POSTHOG_PUBLIC_DASHBOARD_URL" loading="lazy"></iframe>
+  </section>
+
+  <section class="section">
+    <h2>Resources</h2>
+    <p><a href="#" class="button">Duplicate Notion template</a></p>
+    <p><a href="#" class="button">Turn on Zap templates</a></p>
+    <p><a href="/perks.html" class="button">View startup perks</a></p>
+  </section>
   
 </body>
 </html>
