@@ -67,10 +67,17 @@
 
   <button id="cta">Get Starter Pack</button>
   <script>
-  document.getElementById('cta').addEventListener('click', () => {
-    posthog.capture('sign_up', { source: 'landing', plan: 'free' });
-  });
+    document.getElementById('cta').addEventListener('click', function (e) {
+      e.preventDefault();
+      posthog.capture('sign_up',
+        { source: 'landing', plan: 'free' },
+        { transport: 'sendBeacon', send_instantly: true }
+      );
+      // tiny delay just in case the browser can't beacon immediately
+      setTimeout(() => { window.location.href = 'YOUR_CHECKOUT_URL'; }, 150);
+    });
   </script>
+  
   
 </body>
 </html>
