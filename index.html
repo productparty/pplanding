@@ -31,7 +31,19 @@
   // Tag every event so you can filter/debug by env or project
   posthog.register({ project_env: 'test', project_id: 211328 });
   </script>
+ 
+ <script>
+  (function () {
+    const q = new URLSearchParams(location.search), p = {};
+    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(k=>{
+      if (q.get(k)) p[k]=q.get(k);
+    });
+    if (q.get('utm_source')) p.source = q.get('utm_source');
+    if (Object.keys(p).length) posthog.register(p);
+  })();
+  </script>
   
+
 </head>
 <body>
   <h1>Get users to first value</h1>
@@ -52,5 +64,13 @@
   </p>
 
   <p class="muted">Next: build a funnel in PostHog (sign_up → onboarding_started → onboarding_completed → first_value).</p>
+
+  <button id="cta">Get Starter Pack</button>
+  <script>
+  document.getElementById('cta').addEventListener('click', () => {
+    posthog.capture('sign_up', { source: 'landing', plan: 'free' });
+  });
+  </script>
+  
 </body>
 </html>
