@@ -64,7 +64,7 @@
       </div>
 
       <div class="card pad">
-        <h2 style="margin-top:0">You'll walk away with</h2>
+        <h2 class="no-margin-top">You'll walk away with</h2>
         <ul class="list">
           <li>✅ A 4-event activation schema (+ "habit_action")</li>
           <li>✅ A pre-built PostHog dashboard (funnel, time-to-value, retention)</li>
@@ -95,7 +95,7 @@
     <section id="demo" class="card pad">
       <h2>Try it live (no sign-up)</h2>
       <p class="muted">These fire the same events you'll use. Watch them stream into your PostHog "Activity → Events".</p>
-      <div class="demo-btns" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:8px">
+      <div class="demo-btns">
         <button onclick="posthog.capture('sign_up',{source:'landing',plan:'free'})">Fire sign_up</button>
         <button onclick="posthog.capture('onboarding_started',{step:'profile'})">Fire onboarding_started</button>
         <button onclick="posthog.capture('onboarding_completed',{time_to_complete:180})">Fire onboarding_completed</button>
@@ -110,7 +110,7 @@
       <h2>Activation dashboard (live)</h2>
       <p class="muted">This is the actual dashboard you'll get. If you're not seeing data yet, click a few demo buttons above.</p>
       <!-- Replace with your PostHog PUBLIC dashboard link -->
-      <iframe src="POSTHOG_PUBLIC_DASHBOARD_URL" width="100%" height="640" loading="lazy" style="border-radius:12px;border:1px solid var(--border)"></iframe>
+      <iframe src="POSTHOG_PUBLIC_DASHBOARD_URL" width="100%" height="640" loading="lazy" class="dashboard-iframe"></iframe>
     </section>
 
     <!-- FAQ -->
