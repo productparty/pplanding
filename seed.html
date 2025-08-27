@@ -1,56 +1,155 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Seed Events</title>
+  <meta charset="utf-8" />
+  <title>Seed Events — Product Party</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Generate demo events in PostHog to test your activation tracking setup." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%23000%22/><text x=%2250%22 y=%2258%22 font-size=%2256%22 text-anchor=%22middle%22 fill=%22%23fff%22>P</text></svg>">
+  <meta property="og:title" content="Seed Events — Product Party" />
+  <meta property="og:description" content="Generate demo events in PostHog to test your activation tracking setup." />
+  <meta property="og:type" content="website" />
+
   <style>
-    body{font-family:system-ui,Segoe UI,Inter,Arial,sans-serif;max-width:760px;margin:40px auto;padding:0 16px;line-height:1.5}
-    button{padding:10px 14px;border:1px solid #ddd;border-radius:10px;background:#fff;margin:6px 6px 0 0;cursor:pointer}
+    :root{
+      --bg:#0b0c10;
+      --panel:#101218;
+      --text:#e8eaf1;
+      --muted:#a7adc4;
+      --brand:#6ea8fe;
+      --brand-2:#b2f5ea;
+      --ok:#34d399;
+      --warn:#fbbf24;
+      --border:#222533;
+      --shadow:0 10px 25px rgba(0,0,0,.35);
+      --radius:16px;
+    }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#f7f8fb; --panel:#ffffff; --text:#0b1220; --muted:#5b6784; --border:#e9edf5; --shadow:0 10px 24px rgba(16,24,40,.08); }
+    }
+    *{box-sizing:border-box}
+    body{font-family:ui-sans-serif,system-ui,Segoe UI,Inter,Arial,sans-serif;background:radial-gradient(1200px 600px at 80% -10%, rgba(110,168,254,.25), transparent), var(--bg);color:var(--text);margin:0}
+    .wrap{max-width:960px;margin:0 auto;padding:28px 18px 80px}
+    header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+    .brand{font-weight:700;letter-spacing:.2px}
+    nav a{color:var(--muted);text-decoration:none;margin-left:14px}
+    .hero{display:grid;grid-template-columns:1fr;gap:28px;align-items:center;margin:28px 0}
+    .card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .pad{padding:22px}
+    h1{font-size:clamp(26px,4vw,42px);line-height:1.1;margin:0 0 10px}
+    .sub{color:var(--muted);font-size:1.05rem}
+    .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:12px;border:1px solid var(--border);background:#fff0;color:var(--text);text-decoration:none;cursor:pointer;transition:.15s transform,.15s box-shadow,.15s background}
+    .btn.primary{background:linear-gradient(180deg,var(--brand),#4f83ff);color:#fff;border-color:transparent;box-shadow:0 6px 30px rgba(78,128,255,.35)}
+    .btn:hover{transform:translateY(-1px)}
+    .kicker{display:inline-block;font-size:.85rem;color:var(--brand-2);background:rgba(178,245,234,.1);border:1px solid rgba(178,245,234,.35);padding:4px 8px;border-radius:999px;margin-bottom:10px}
+    section{margin:34px 0}
+    .grid{display:grid;gap:18px}
+    .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    @media (max-width:860px){ .grid.cols-2{grid-template-columns:1fr}}
+    h2{font-size:1.3rem;margin:0 0 10px}
+    .muted{color:var(--muted)}
+    .list{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+    .list li{display:flex;gap:10px;align-items:flex-start}
+    .tag{display:inline-block;background:rgba(110,168,254,.12);border:1px solid rgba(110,168,254,.35);color:#dbe6ff;padding:2px 8px;border-radius:999px;font-size:.8rem}
+    footer{margin-top:40px;color:var(--muted);font-size:.9rem}
+    .demo-btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+    .demo-btns button{padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--panel);color:var(--text);cursor:pointer;transition:.15s transform}
+    .demo-btns button:hover{transform:translateY(-1px)}
+    .demo-btns .primary{background:linear-gradient(180deg,var(--ok),#059669);color:#fff;border-color:transparent}
   </style>
+
+  <!-- PostHog (US Cloud) -->
   <script>
-    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){
-      function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}
-      (p=t.createElement("script")).type="text/javascript",p.async=!0,
-      p.src="https://us.i.posthog.com/static/array.js",
-      (r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);
-      var u=e;void 0!==a?u=e[a]=[]:a="posthog";u.people=u.people||[];
-      u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e};
-      u.people.toString=function(){return u.toString(1)+".people (stub)"};
-      o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing opt_in_capturing has_opted_out_capturing reset isFeatureEnabled onFeatureFlags group".split(" ");
-      for(n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-    
-    posthog.init('phc_3ACn7GrUe4Qzji0iXMvm7dmyL3XDx7G36SfUH9TQ4il', {
-      api_host: 'https://us.i.posthog.com',
-      capture_pageview: true
-    });
-    
-    posthog.register({ project_env: 'test', project_id: 211328 });
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){
+    function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}
+    (p=t.createElement("script")).type="text/javascript",p.async=!0,p.src="https://us.i.posthog.com/static/array.js",
+    (r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);
+    var u=e;void 0!==a?u=e[a]=[]:a="posthog";u.people=u.people||[];
+    u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e};
+    u.people.toString=function(){return u.toString(1)+".people (stub)"},
+    o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing opt_in_capturing has_opted_out_capturing reset isFeatureEnabled onFeatureFlags group".split(" ");
+    for(n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  posthog.init('phc_3ACn7GrUe4Qzji0iXMvm7dmyL3XDx7G36SfUH9TQ4il', { api_host:'https://us.i.posthog.com', capture_pageview:true });
+  posthog.register({ project_env:'test', project_id:211328 });
   </script>
 </head>
 <body>
-  <h1>Seed Events</h1>
-  <p>Click these buttons to generate demo events in PostHog:</p>
-  
-  <button onclick="posthog.identify('user_'+Math.floor(Math.random()*1e6),{plan:'free',source:'seed'})">Identify</button>
-  <button onclick="posthog.capture('sign_up',{source:'seed',plan:'free'})">sign_up</button>
-  <button onclick="posthog.capture('onboarding_started',{step:'profile'})">onboarding_started</button>
-  <button onclick="posthog.capture('onboarding_completed',{time_to_complete:120})">onboarding_completed</button>
-  <button onclick="posthog.capture('first_value',{value_type:'demo',time_from_signup:3})">first_value</button>
-  <button onclick="posthog.capture('habit_action',{count_7d:1,count_28d:1})">habit_action</button>
-  
-  <p style="margin-top:24px">
-    <button onclick="
-      const id='user_seed_'+Date.now();
-      posthog.reset();posthog.identify(id,{plan:'free',source:'seed'});
-      posthog.capture('sign_up',{source:'seed',plan:'free'});
-      setTimeout(()=>posthog.capture('onboarding_started',{step:'profile'}),500);
-      setTimeout(()=>posthog.capture('onboarding_completed',{time_to_complete:120}),1000);
-      setTimeout(()=>posthog.capture('first_value',{value_type:'demo',time_from_signup:3}),1500);
-      setTimeout(()=>posthog.capture('habit_action',{count_7d:1,count_28d:1}),2300);
-    ">Fire full journey</button>
-  </p>
-  
-  <p><a href="/index.html">← Back to Activation</a></p>
+  <div class="wrap">
+    <header>
+      <div class="brand">Product Party</div>
+      <nav>
+        <a href="index.html">Activation</a>
+        <a href="perks.html">Perks</a>
+        <a href="seed.html">Seed Events</a>
+      </nav>
+    </header>
+
+    <div class="hero">
+      <div class="card pad">
+        <span class="kicker">Test your setup</span>
+        <h1>Seed Events for PostHog</h1>
+        <p class="sub">Generate demo events to test your activation tracking setup. Click individual buttons or fire the full user journey.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="index.html">← Back to Activation</a>
+        </div>
+      </div>
+    </div>
+
+    <section class="card pad">
+      <h2>Individual Events</h2>
+      <p class="muted">Click these buttons to generate individual events in PostHog:</p>
+      <div class="demo-btns">
+        <button onclick="posthog.identify('user_'+Math.floor(Math.random()*1e6),{plan:'free',source:'seed'})">Identify</button>
+        <button onclick="posthog.capture('sign_up',{source:'seed',plan:'free'})">sign_up</button>
+        <button onclick="posthog.capture('onboarding_started',{step:'profile'})">onboarding_started</button>
+        <button onclick="posthog.capture('onboarding_completed',{time_to_complete:120})">onboarding_completed</button>
+        <button onclick="posthog.capture('first_value',{value_type:'demo',time_from_signup:3})">first_value</button>
+        <button onclick="posthog.capture('habit_action',{count_7d:1,count_28d:1})">habit_action</button>
+      </div>
+    </section>
+
+    <section class="card pad">
+      <h2>Full User Journey</h2>
+      <p class="muted">This button fires all events in sequence to simulate a complete user activation:</p>
+      <div class="demo-btns">
+        <button class="primary" onclick="
+          const id='user_seed_'+Date.now();
+          posthog.reset();
+          posthog.identify(id,{plan:'free',source:'seed'});
+          posthog.capture('sign_up',{source:'seed',plan:'free'});
+          setTimeout(()=>posthog.capture('onboarding_started',{step:'profile'}),500);
+          setTimeout(()=>posthog.capture('onboarding_completed',{time_to_complete:120}),1000);
+          setTimeout(()=>posthog.capture('first_value',{value_type:'demo',time_from_signup:3}),1500);
+          setTimeout(()=>posthog.capture('habit_action',{count_7d:1,count_28d:1}),2300);
+        ">Fire full journey</button>
+      </div>
+    </section>
+
+    <section class="grid cols-2">
+      <div class="card pad">
+        <h2>What you'll see</h2>
+        <ul class="list">
+          <li>• Events appear in PostHog "Activity → Events"</li>
+          <li>• User properties get set on identify</li>
+          <li>• Event properties include source tracking</li>
+          <li>• Full journey creates a complete funnel</li>
+        </ul>
+      </div>
+      <div class="card pad">
+        <h2>Next steps</h2>
+        <ul class="list">
+          <li>• Build a funnel in PostHog</li>
+          <li>• Create cohorts for fast/slow activators</li>
+          <li>• Set up alerts for stalled users</li>
+          <li>• Import the starter pack dashboard</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      <div>© Product Party • <a href="index.html">Back to Activation</a></div>
+    </footer>
+  </div>
 </body>
 </html>

@@ -2,18 +2,69 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <title>Welcome to Product Party — You're In!</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Thanks — You're In</title>
-  <style>body{font-family:system-ui,Segoe UI,Inter,Arial,sans-serif;max-width:720px;margin:40px auto;padding:0 16px;line-height:1.5}</style>
+  <meta name="description" content="Your Activation Starter Pack is on the way. Welcome to Product Party!" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%23000%22/><text x=%2250%22 y=%2258%22 font-size=%2256%22 text-anchor=%22middle%22 fill=%22%23fff%22>P</text></svg>">
+  <meta property="og:title" content="Welcome to Product Party — You're In!" />
+  <meta property="og:description" content="Your Activation Starter Pack is on the way. Welcome to Product Party!" />
+  <meta property="og:type" content="website" />
 
-  <!-- Same PostHog snippet you used on index.html -->
+  <style>
+    :root{
+      --bg:#0b0c10;
+      --panel:#101218;
+      --text:#e8eaf1;
+      --muted:#a7adc4;
+      --brand:#6ea8fe;
+      --brand-2:#b2f5ea;
+      --ok:#34d399;
+      --warn:#fbbf24;
+      --border:#222533;
+      --shadow:0 10px 25px rgba(0,0,0,.35);
+      --radius:16px;
+    }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#f7f8fb; --panel:#ffffff; --text:#0b1220; --muted:#5b6784; --border:#e9edf5; --shadow:0 10px 24px rgba(16,24,40,.08); }
+    }
+    *{box-sizing:border-box}
+    body{font-family:ui-sans-serif,system-ui,Segoe UI,Inter,Arial,sans-serif;background:radial-gradient(1200px 600px at 80% -10%, rgba(110,168,254,.25), transparent), var(--bg);color:var(--text);margin:0}
+    .wrap{max-width:960px;margin:0 auto;padding:28px 18px 80px}
+    header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+    .brand{font-weight:700;letter-spacing:.2px}
+    nav a{color:var(--muted);text-decoration:none;margin-left:14px}
+    .hero{display:grid;grid-template-columns:1fr;gap:28px;align-items:center;margin:28px 0;text-align:center}
+    .card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .pad{padding:22px}
+    h1{font-size:clamp(26px,4vw,42px);line-height:1.1;margin:0 0 10px}
+    .sub{color:var(--muted);font-size:1.05rem}
+    .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px;justify-content:center}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:12px;border:1px solid var(--border);background:#fff0;color:var(--text);text-decoration:none;cursor:pointer;transition:.15s transform,.15s box-shadow,.15s background}
+    .btn.primary{background:linear-gradient(180deg,var(--brand),#4f83ff);color:#fff;border-color:transparent;box-shadow:0 6px 30px rgba(78,128,255,.35)}
+    .btn:hover{transform:translateY(-1px)}
+    .kicker{display:inline-block;font-size:.85rem;color:var(--ok);background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.35);padding:4px 8px;border-radius:999px;margin-bottom:10px}
+    section{margin:34px 0}
+    .grid{display:grid;gap:18px}
+    .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    @media (max-width:860px){ .grid.cols-2{grid-template-columns:1fr}}
+    h2{font-size:1.3rem;margin:0 0 10px}
+    .muted{color:var(--muted)}
+    .list{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+    .list li{display:flex;gap:10px;align-items:flex-start}
+    .tag{display:inline-block;background:rgba(110,168,254,.12);border:1px solid rgba(110,168,254,.35);color:#dbe6ff;padding:2px 8px;border-radius:999px;font-size:.8rem}
+    footer{margin-top:40px;color:var(--muted);font-size:.9rem;text-align:center}
+    .success-icon{font-size:4rem;margin-bottom:16px}
+  </style>
+
+  <!-- PostHog (US Cloud) -->
   <script>
   !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){
     function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}
     (p=t.createElement("script")).type="text/javascript",p.async=!0,p.src="https://us.i.posthog.com/static/array.js",
-    (r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;void 0!==a?u=e[a]=[]:a="posthog";u.people=u.people||[];
+    (r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);
+    var u=e;void 0!==a?u=e[a]=[]:a="posthog";u.people=u.people||[];
     u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e};
-    u.people.toString=function(){return u.toString(1)+".people (stub)"};
+    u.people.toString=function(){return u.toString(1)+".people (stub)"},
     o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing opt_in_capturing has_opted_out_capturing reset isFeatureEnabled onFeatureFlags group".split(" ");
     for(n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
   posthog.init('phc_3ACn7GrUe4Qzji0iXMvm7dmyL3XDx7G36SfUH9TQ4il', { api_host:'https://us.i.posthog.com', capture_pageview:true });
@@ -21,11 +72,54 @@
   </script>
 </head>
 <body>
-  <h1>You're in 🎉</h1>
-  <p>Your Activation Starter Pack is on the way. <a href="/index.html">Back to Activation</a></p>
+  <div class="wrap">
+    <header>
+      <div class="brand">Product Party</div>
+      <nav>
+        <a href="index.html">Activation</a>
+        <a href="perks.html">Perks</a>
+        <a href="seed.html">Seed Events</a>
+      </nav>
+    </header>
+
+    <div class="hero">
+      <div class="card pad">
+        <div class="success-icon">🎉</div>
+        <span class="kicker">Welcome aboard!</span>
+        <h1>You're in — Starter Pack incoming</h1>
+        <p class="sub">Your Activation Starter Pack is on the way. Check your email for the download link and setup instructions.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="index.html">Back to Activation</a>
+          <a class="btn" href="perks.html">View Founder Perks</a>
+        </div>
+      </div>
+    </div>
+
+    <section class="grid cols-2">
+      <div class="card pad">
+        <h2>What's next?</h2>
+        <ul class="list">
+          <li>📧 Check your email for the download link</li>
+          <li>📊 Import the dashboard into your PostHog</li>
+          <li>🎯 Set up the 4-event activation schema</li>
+          <li>⚡ Configure your first automation</li>
+        </ul>
+      </div>
+      <div class="card pad">
+        <h2>Need help?</h2>
+        <p class="muted">Email <a href="mailto:hey@mikewatson.us">hey@mikewatson.us</a> if you run into any issues or want to chat about activation strategy.</p>
+        <p class="muted">I usually respond within a few hours during business days.</p>
+      </div>
+    </section>
+
+    <footer>
+      <div>© Product Party • <a href="/perks.html">Founder perks</a></div>
+    </footer>
+  </div>
+
   <script>
     // Count a successful purchase as first value
-    posthog.capture('first_value', { value_type:'purchase', source:'lemon_squeezy' },
+    posthog.capture('first_value', { value_type:'purchase', source:'stripe' },
       { transport:'sendBeacon', send_instantly:true });
   </script>
 </body>

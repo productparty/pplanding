@@ -2,77 +2,200 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Get to First Value</title>
+  <title>Get to First Value — Product Party</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="A tiny, self-serve starter pack to instrument activation fast: events, dashboard, and automations. Try it live, then buy for $49." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%23000%22/><text x=%2250%22 y=%2258%22 font-size=%2256%22 text-anchor=%22middle%22 fill=%22%23fff%22>P</text></svg>">
+  <meta property="og:title" content="Get to First Value — Product Party" />
+  <meta property="og:description" content="Instrument activation in an afternoon: PostHog events, live dashboard, and starter automations." />
+  <meta property="og:type" content="website" />
+
   <style>
-    body{font-family:system-ui,Segoe UI,Inter,Arial,sans-serif;max-width:760px;margin:40px auto;padding:0 16px;line-height:1.5}
-    button,a.button{padding:10px 14px;border:1px solid #ddd;border-radius:10px;background:#fff;margin:6px 6px 0 0;cursor:pointer;text-decoration:none;display:inline-block}
-    .muted{color:#666}
-    iframe{border:1px solid #eee;border-radius:8px;width:100%;height:720px}
-    .section{margin:32px 0}
+    :root{
+      --bg:#0b0c10;
+      --panel:#101218;
+      --text:#e8eaf1;
+      --muted:#a7adc4;
+      --brand:#6ea8fe;
+      --brand-2:#b2f5ea;
+      --ok:#34d399;
+      --warn:#fbbf24;
+      --border:#222533;
+      --shadow:0 10px 25px rgba(0,0,0,.35);
+      --radius:16px;
+    }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#f7f8fb; --panel:#ffffff; --text:#0b1220; --muted:#5b6784; --border:#e9edf5; --shadow:0 10px 24px rgba(16,24,40,.08); }
+    }
+    *{box-sizing:border-box}
+    body{font-family:ui-sans-serif,system-ui,Segoe UI,Inter,Arial,sans-serif;background:radial-gradient(1200px 600px at 80% -10%, rgba(110,168,254,.25), transparent), var(--bg);color:var(--text);margin:0}
+    .wrap{max-width:960px;margin:0 auto;padding:28px 18px 80px}
+    header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+    .brand{font-weight:700;letter-spacing:.2px}
+    nav a{color:var(--muted);text-decoration:none;margin-left:14px}
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;margin:28px 0}
+    .card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .pad{padding:22px}
+    h1{font-size:clamp(26px,4vw,42px);line-height:1.1;margin:0 0 10px}
+    .sub{color:var(--muted);font-size:1.05rem}
+    .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:12px;border:1px solid var(--border);background:#fff0;color:var(--text);text-decoration:none;cursor:pointer;transition:.15s transform,.15s box-shadow,.15s background}
+    .btn.primary{background:linear-gradient(180deg,var(--brand),#4f83ff);color:#fff;border-color:transparent;box-shadow:0 6px 30px rgba(78,128,255,.35)}
+    .btn:hover{transform:translateY(-1px)}
+    .kicker{display:inline-block;font-size:.85rem;color:var(--brand-2);background:rgba(178,245,234,.1);border:1px solid rgba(178,245,234,.35);padding:4px 8px;border-radius:999px;margin-bottom:10px}
+    section{margin:34px 0}
+    .grid{display:grid;gap:18px}
+    .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    @media (max-width:860px){ .hero{grid-template-columns:1fr} .grid.cols-3,.grid.cols-2{grid-template-columns:1fr}}
+    h2{font-size:1.3rem;margin:0 0 10px}
+    .muted{color:var(--muted)}
+    .list{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+    .list li{display:flex;gap:10px;align-items:flex-start}
+    .pill{display:inline-flex;align-items:center;gap:8px;border:1px dashed var(--border);padding:8px 10px;border-radius:10px;color:var(--muted)}
+    .tag{display:inline-block;background:rgba(110,168,254,.12);border:1px solid rgba(110,168,254,.35);color:#dbe6ff;padding:2px 8px;border-radius:999px;font-size:.8rem}
+    .demo-btns button{padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:var(--panel);color:var(--text);cursor:pointer}
+    .faq dt{font-weight:700;margin-top:12px}
+    .faq dd{margin:6px 0 0 0;color:var(--muted)}
+    footer{margin-top:40px;color:var(--muted);font-size:.9rem}
   </style>
 
-<script>
+  <!-- PostHog (US Cloud) -->
+  <script>
   !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){
     function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}
-    (p=t.createElement("script")).type="text/javascript",p.async=!0,
-    p.src="https://us.i.posthog.com/static/array.js",  // US Cloud loader
+    (p=t.createElement("script")).type="text/javascript",p.async=!0,p.src="https://us.i.posthog.com/static/array.js",
     (r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);
     var u=e;void 0!==a?u=e[a]=[]:a="posthog";u.people=u.people||[];
     u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e};
-    u.people.toString=function(){return u.toString(1)+".people (stub)"};
+    u.people.toString=function(){return u.toString(1)+".people (stub)"},
     o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing opt_in_capturing has_opted_out_capturing reset isFeatureEnabled onFeatureFlags group".split(" ");
     for(n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-  
-  // ---- PostHog init (US Cloud) ----
-  posthog.init('phc_3ACn7GrUe4Qzji0iXMvm7dmyL3XDx7G36SfUH9TQ4il', {
-    api_host: 'https://us.i.posthog.com',
-    capture_pageview: true
-  });
-  
-  // Tag every event so you can filter/debug by env or project
-  posthog.register({ project_env: 'test', project_id: 211328 });
+  posthog.init('phc_3ACn7GrUe4Qzji0iXMvm7dmyL3XDx7G36SfUH9TQ4il', { api_host:'https://us.i.posthog.com', capture_pageview:true });
+  posthog.register({ project_env:'test', project_id:211328 });
   </script>
- 
- <script>
+
+  <!-- UTM capture -->
+  <script>
   (function () {
     const q = new URLSearchParams(location.search), p = {};
-    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(k=>{
-      if (q.get(k)) p[k]=q.get(k);
-    });
+    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(k=>{ if(q.get(k)) p[k]=q.get(k); });
     if (q.get('utm_source')) p.source = q.get('utm_source');
     if (Object.keys(p).length) posthog.register(p);
   })();
   </script>
-  
-
 </head>
 <body>
-  <h1>Get users to first value</h1>
-  <p class="muted">Click these demo buttons to generate events and confirm your setup.</p>
+  <div class="wrap">
+    <header>
+      <div class="brand">Product Party</div>
+      <nav>
+        <a href="#inside">What's inside</a>
+        <a href="#demo">Try it</a>
+        <a href="#dashboard">Live dashboard</a>
+        <a href="/perks.html">Perks</a>
+      </nav>
+    </header>
 
-  <div>
-    <button onclick="posthog.capture('sign_up', {source:'landing', plan:'free'})">Fire sign_up</button>
-    <button onclick="posthog.capture('onboarding_started', {step:'profile'})">Fire onboarding_started</button>
-    <button onclick="posthog.capture('onboarding_completed', {time_to_complete:180})">Fire onboarding_completed</button>
-    <button onclick="posthog.capture('first_value', {value_type:'demo', time_from_signup:3})">Fire first_value</button>
-    <button onclick="posthog.capture('habit_action', {count_7d:3, count_28d:9})">Fire habit_action</button>
+    <div class="hero">
+      <div class="card pad">
+        <span class="kicker">Hands-on, self-serve</span>
+        <h1>Get users to first value this weekend</h1>
+        <p class="sub">A tiny starter pack that instruments activation in hours: events, live dashboard, and alert templates. Try the demo below—if it clicks, grab the pack.</p>
+        <div class="cta-row">
+          <a id="cta" class="btn primary" href="https://buy.stripe.com/test_7sY4gz37j6Nu9PH2C45Rm00" rel="noopener">
+            <span>Get the Starter Pack — $49</span>
+          </a>
+          <a class="btn" href="#demo">Try the live demo</a>
+          <span class="pill">No calls • No commitments • Refund if it's not useful</span>
+        </div>
+      </div>
+
+      <div class="card pad">
+        <h2 style="margin-top:0">You'll walk away with</h2>
+        <ul class="list">
+          <li>✅ A 4-event activation schema (+ "habit_action")</li>
+          <li>✅ A pre-built PostHog dashboard (funnel, time-to-value, retention)</li>
+          <li>✅ Two cohorts: <span class="tag">Fast activators</span> & <span class="tag">Stalled &lt;24h</span></li>
+          <li>✅ Zap templates for Slack pings & follow-ups</li>
+          <li>✅ A Notion lite playbook with 12 no-budget experiments</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- What's inside -->
+    <section id="inside" class="grid cols-3">
+      <div class="card pad">
+        <h2>Events that matter</h2>
+        <p class="muted">`sign_up` → `onboarding_started` → `onboarding_completed` → `first_value` (+ `habit_action`). Names map cleanly to your product's flows.</p>
+      </div>
+      <div class="card pad">
+        <h2>Dashboard, not a deck</h2>
+        <p class="muted">See activation rate, time-to-first-value, and week-1 habit retention out of the box—no BI setup.</p>
+      </div>
+      <div class="card pad">
+        <h2>Automation hooks</h2>
+        <p class="muted">Slack on <em>first value</em>. Email when users stall after 24h. Start nudging without building internal tooling.</p>
+      </div>
+    </section>
+
+    <!-- Demo (your existing buttons, but styled) -->
+    <section id="demo" class="card pad">
+      <h2>Try it live (no sign-up)</h2>
+      <p class="muted">These fire the same events you'll use. Watch them stream into your PostHog "Activity → Events".</p>
+      <div class="demo-btns" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:8px">
+        <button onclick="posthog.capture('sign_up',{source:'landing',plan:'free'})">Fire sign_up</button>
+        <button onclick="posthog.capture('onboarding_started',{step:'profile'})">Fire onboarding_started</button>
+        <button onclick="posthog.capture('onboarding_completed',{time_to_complete:180})">Fire onboarding_completed</button>
+        <button onclick="posthog.capture('first_value',{value_type:'demo',time_from_signup:3})">Fire first_value</button>
+        <button onclick="posthog.capture('habit_action',{count_7d:3,count_28d:9})">Fire habit_action</button>
+        <button onclick="posthog.identify('user_'+Math.floor(Math.random()*100000),{plan:'free',source:'landing'})">Identify a user (fake id)</button>
+      </div>
+    </section>
+
+    <!-- Live dashboard embed -->
+    <section id="dashboard" class="card pad">
+      <h2>Activation dashboard (live)</h2>
+      <p class="muted">This is the actual dashboard you'll get. If you're not seeing data yet, click a few demo buttons above.</p>
+      <!-- Replace with your PostHog PUBLIC dashboard link -->
+      <iframe src="POSTHOG_PUBLIC_DASHBOARD_URL" width="100%" height="640" loading="lazy" style="border-radius:12px;border:1px solid var(--border)"></iframe>
+    </section>
+
+    <!-- FAQ -->
+    <section class="grid cols-2">
+      <div class="card pad">
+        <h2>Who is this for?</h2>
+        <ul class="list">
+          <li>• Early-stage founders who need a <em>working</em> activation view, not a 40-slide deck.</li>
+          <li>• PMs spinning up a side-project and want clean events + a simple dashboard.</li>
+          <li>• Newsletters/creators testing paid features with lightweight analytics.</li>
+        </ul>
+      </div>
+      <div class="card pad">
+        <h2>What tools does it use?</h2>
+        <p class="muted">PostHog (events + dashboard), your site (Vercel), and optional Zaps for nudges. Payment is via Stripe Payment Link.</p>
+      </div>
+    </section>
+
+    <section class="card pad">
+      <h2>FAQ</h2>
+      <dl class="faq">
+        <dt>Do I need PostHog first?</dt>
+        <dd>Yes, but setup is copy-paste. You already have it wired—nice.</dd>
+        <dt>What exactly do I get for $49?</dt>
+        <dd>The activation event schema, a sharable dashboard, two cohorts + an alert, a Notion playbook (Lite), and two Zap how-tos.</dd>
+        <dt>Refunds?</dt>
+        <dd>If it's not helpful in 7 days, email <a href="mailto:hey@mikewatson.us">hey@mikewatson.us</a> and I'll refund it.</dd>
+      </dl>
+    </section>
+
+    <footer>
+      <div>© Product Party • <a href="/perks.html">Founder perks</a></div>
+    </footer>
   </div>
 
-  <p style="margin-top:24px">
-    <button onclick="posthog.identify('user_'+Math.floor(Math.random()*100000), {plan:'free', source:'landing'})">
-      Identify a user (fake id)
-    </button>
-  </p>
-
-  <p class="muted">Next: build a funnel in PostHog (sign_up → onboarding_started → onboarding_completed → first_value).</p>
-
-  <a id="cta" class="button"
-     href="https://productparty.lemonsqueezy.com/buy/27dc0e16-21c9-46c3-8a9d-82e7348d8817"
-     rel="noopener">Get the Starter Pack — $49</a>
-
+  <!-- CTA tracking + keep UTMs to Stripe -->
   <script>
-    // Track the click and keep UTMs when sending to Lemon Squeezy
     (function () {
       const cta = document.getElementById('cta');
       const qs  = new URLSearchParams(location.search);
@@ -81,30 +204,13 @@
         if (qs.get(k)) u.searchParams.set(k, qs.get(k));
       });
       cta.href = u.toString();
-
       cta.addEventListener('click', function () {
         posthog.capture('sign_up',
-          { source: 'landing', plan: 'starter_pack' },
-          { transport: 'sendBeacon', send_instantly: true }
+          { source:'landing', plan:'starter_pack' },
+          { transport:'sendBeacon', send_instantly:true }
         );
       });
     })();
   </script>
-
-  <!-- Dashboard section - uncomment when you have your PostHog public dashboard URL -->
-  <!--
-  <section id="dashboard" class="section">
-    <h2>Activation dashboard (live)</h2>
-    <iframe src="POSTHOG_PUBLIC_DASHBOARD_URL" loading="lazy"></iframe>
-  </section>
-  -->
-
-  <section class="section">
-    <h2>Resources</h2>
-    <p><a href="#" class="button">Duplicate Notion template</a></p>
-    <p><a href="#" class="button">Turn on Zap templates</a></p>
-    <p><a href="/perks.html" class="button">View startup perks</a></p>
-  </section>
-  
 </body>
 </html>

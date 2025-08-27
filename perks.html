@@ -1,20 +1,134 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Founder Perks</title>
-  <link rel="stylesheet" href="data:text/css,body{font-family:system-ui,Segoe UI,Inter,Arial,sans-serif;max-width:760px;margin:40px auto;padding:0 16px;line-height:1.5} a,button{padding:10px 14px;border:1px solid #ddd;border-radius:10px;background:#fff;margin:6px 6px 0 0;text-decoration:none;display:inline-block}">
+  <meta charset="utf-8" />
+  <title>Founder Perks — Product Party</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Exclusive startup perks and discounts for Product Party readers. Notion, PostHog, Airtable, and more." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%23000%22/><text x=%2250%22 y=%2258%22 font-size=%2256%22 text-anchor=%22middle%22 fill=%22%23fff%22>P</text></svg>">
+  <meta property="og:title" content="Founder Perks — Product Party" />
+  <meta property="og:description" content="Exclusive startup perks and discounts for Product Party readers." />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root{
+      --bg:#0b0c10;
+      --panel:#101218;
+      --text:#e8eaf1;
+      --muted:#a7adc4;
+      --brand:#6ea8fe;
+      --brand-2:#b2f5ea;
+      --ok:#34d399;
+      --warn:#fbbf24;
+      --border:#222533;
+      --shadow:0 10px 25px rgba(0,0,0,.35);
+      --radius:16px;
+    }
+    @media (prefers-color-scheme: light){
+      :root{ --bg:#f7f8fb; --panel:#ffffff; --text:#0b1220; --muted:#5b6784; --border:#e9edf5; --shadow:0 10px 24px rgba(16,24,40,.08); }
+    }
+    *{box-sizing:border-box}
+    body{font-family:ui-sans-serif,system-ui,Segoe UI,Inter,Arial,sans-serif;background:radial-gradient(1200px 600px at 80% -10%, rgba(110,168,254,.25), transparent), var(--bg);color:var(--text);margin:0}
+    .wrap{max-width:960px;margin:0 auto;padding:28px 18px 80px}
+    header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+    .brand{font-weight:700;letter-spacing:.2px}
+    nav a{color:var(--muted);text-decoration:none;margin-left:14px}
+    .hero{display:grid;grid-template-columns:1fr;gap:28px;align-items:center;margin:28px 0}
+    .card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .pad{padding:22px}
+    h1{font-size:clamp(26px,4vw,42px);line-height:1.1;margin:0 0 10px}
+    .sub{color:var(--muted);font-size:1.05rem}
+    .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:12px;border:1px solid var(--border);background:#fff0;color:var(--text);text-decoration:none;cursor:pointer;transition:.15s transform,.15s box-shadow,.15s background}
+    .btn.primary{background:linear-gradient(180deg,var(--brand),#4f83ff);color:#fff;border-color:transparent;box-shadow:0 6px 30px rgba(78,128,255,.35)}
+    .btn:hover{transform:translateY(-1px)}
+    .kicker{display:inline-block;font-size:.85rem;color:var(--brand-2);background:rgba(178,245,234,.1);border:1px solid rgba(178,245,234,.35);padding:4px 8px;border-radius:999px;margin-bottom:10px}
+    section{margin:34px 0}
+    .grid{display:grid;gap:18px}
+    .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    @media (max-width:860px){ .grid.cols-2{grid-template-columns:1fr}}
+    h2{font-size:1.3rem;margin:0 0 10px}
+    .muted{color:var(--muted)}
+    .list{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+    .list li{display:flex;gap:10px;align-items:flex-start;padding:16px;border:1px solid var(--border);border-radius:12px;background:var(--panel)}
+    .tag{display:inline-block;background:rgba(110,168,254,.12);border:1px solid rgba(110,168,254,.35);color:#dbe6ff;padding:2px 8px;border-radius:999px;font-size:.8rem}
+    footer{margin-top:40px;color:var(--muted);font-size:.9rem}
+    .perk-title{font-weight:600;margin-bottom:4px}
+    .perk-desc{color:var(--muted);font-size:.9rem;margin-bottom:8px}
+  </style>
 </head>
 <body>
-  <h1>Reader Perks for Startups</h1>
-  <p><a href="/index.html">← Back to Activation</a></p>
-  <ul>
-    <li><strong>Notion for Startups</strong> — 3–6 months of Business + AI. <a href="#">Apply</a></li>
-    <li><strong>PostHog Credits</strong> — Startup credits. <a href="#">Apply</a></li>
-    <li><strong>Airtable Credits</strong> — Via partner ecosystems. <a href="#">Apply</a></li>
-    <li><strong>Typeform / Tally</strong> — Startup discounts. <a href="#">Apply</a></li>
-  </ul>
-  <p style="color:#666">Some links are affiliate/startup programs. You may receive credits; I may receive a commission. I only list tools I use.</p>
+  <div class="wrap">
+    <header>
+      <div class="brand">Product Party</div>
+      <nav>
+        <a href="index.html">Activation</a>
+        <a href="perks.html">Perks</a>
+        <a href="seed.html">Seed Events</a>
+      </nav>
+    </header>
+
+    <div class="hero">
+      <div class="card pad">
+        <span class="kicker">Exclusive startup discounts</span>
+        <h1>Founder Perks for Product Party Readers</h1>
+        <p class="sub">Hand-picked tools and services with startup-friendly pricing. Some are affiliate links (I may earn a commission), but I only recommend tools I actually use.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="index.html">← Back to Activation</a>
+        </div>
+      </div>
+    </div>
+
+    <section class="grid cols-2">
+      <div class="card pad">
+        <h2>Productivity & Analytics</h2>
+        <ul class="list">
+          <li>
+            <div>
+              <div class="perk-title">Notion for Startups</div>
+              <div class="perk-desc">3–6 months of Business + AI plan</div>
+              <a href="#" class="btn">Apply for credits</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <div class="perk-title">PostHog Credits</div>
+              <div class="perk-desc">Startup credits for analytics</div>
+              <a href="#" class="btn">Apply for credits</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="card pad">
+        <h2>Tools & Services</h2>
+        <ul class="list">
+          <li>
+            <div>
+              <div class="perk-title">Airtable Credits</div>
+              <div class="perk-desc">Via partner ecosystems</div>
+              <a href="#" class="btn">Apply for credits</a>
+            </div>
+          </li>
+          <li>
+            <div>
+              <div class="perk-title">Typeform / Tally</div>
+              <div class="perk-desc">Startup discounts on forms</div>
+              <a href="#" class="btn">Apply for discount</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card pad">
+      <h2>How it works</h2>
+      <p class="muted">These are either direct startup programs or affiliate partnerships. When you use these links, you may receive credits/discounts and I may receive a small commission. I only list tools I personally use and recommend.</p>
+      <p class="muted">Most programs require you to be an early-stage startup (typically under $1M ARR or 2 years old).</p>
+    </section>
+
+    <footer>
+      <div>© Product Party • <a href="index.html">Back to Activation</a></div>
+    </footer>
+  </div>
 </body>
 </html>
