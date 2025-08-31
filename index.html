@@ -2,15 +2,343 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Get to First Value — Product Party</title>
+  <title>The Founder Startup Pack — Product Party</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="A tiny, self-serve starter pack to instrument activation fast: events, dashboard, and automations. Try it live, then buy for $49." />
+  <meta name="description" content="Skip the first-year mistakes. Get frameworks, templates, and playbooks that actually work—from someone who's been there." />
+  <link rel="canonical" href="https://founderstarterpack.productparty.us" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%23000%22/><text x=%2250%22 y=%2258%22 font-size=%2256%22 text-anchor=%22middle%22 fill=%22%23fff%22>P</text></svg>">
-  <meta property="og:title" content="Get to First Value — Product Party" />
-  <meta property="og:description" content="Instrument activation in an afternoon: PostHog events, live dashboard, and starter automations." />
-  <meta property="og:type" content="website" />
-
-  <link rel="stylesheet" href="styles.css">
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.6;
+      color: #1a1a1a;
+      background: #ffffff;
+      font-size: 16px;
+    }
+    
+    .wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    
+    header {
+      padding: 32px 0;
+      border-bottom: 1px solid #e6e6e6;
+      margin-bottom: 48px;
+    }
+    
+    .brand {
+      font-weight: 600;
+      font-size: 20px;
+      color: #1a1a1a;
+      text-decoration: none;
+    }
+    
+    .brand:hover {
+      color: #666;
+    }
+    
+    nav {
+      margin-top: 16px;
+      display: flex;
+      gap: 24px;
+    }
+    
+    nav a {
+      text-decoration: none;
+      color: #666;
+      font-size: 15px;
+      transition: color 0.2s;
+    }
+    
+    nav a:hover {
+      color: #1a1a1a;
+    }
+    
+    .hero {
+      margin-bottom: 64px;
+    }
+    
+    .hero h1 {
+      font-size: 42px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: #1a1a1a;
+      letter-spacing: -0.02em;
+    }
+    
+    .hero .sub {
+      font-size: 20px;
+      color: #666;
+      line-height: 1.5;
+      margin-bottom: 32px;
+    }
+    
+    .kicker {
+      display: inline-block;
+      color: #666;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .cta-row {
+      margin-bottom: 48px;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 16px;
+      transition: all 0.2s;
+      border: 1px solid #1a1a1a;
+      background: #1a1a1a;
+      color: white;
+      margin-right: 16px;
+      margin-bottom: 16px;
+    }
+    
+    .btn:hover {
+      background: #333;
+      border-color: #333;
+    }
+    
+    .btn.secondary {
+      background: white;
+      color: #1a1a1a;
+      border-color: #ccc;
+    }
+    
+    .btn.secondary:hover {
+      border-color: #1a1a1a;
+    }
+    
+    .pill {
+      display: block;
+      font-size: 14px;
+      color: #666;
+      margin-top: 8px;
+    }
+    
+    .value-props {
+      margin: 64px 0;
+      padding: 48px 32px;
+      background: #f8f9fa;
+      border-radius: 8px;
+    }
+    
+    .value-props h2 {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #1a1a1a;
+    }
+    
+    .value-props > p {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
+    
+    .value-item {
+      margin-bottom: 32px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid #e6e6e6;
+    }
+    
+    .value-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    
+    .value-item h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #1a1a1a;
+    }
+    
+    .value-item p {
+      color: #666;
+      line-height: 1.5;
+    }
+    
+    .section {
+      margin: 64px 0;
+    }
+    
+    .section h2 {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 32px;
+      color: #1a1a1a;
+    }
+    
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+      margin-bottom: 32px;
+    }
+    
+    .card {
+      padding: 32px;
+      border: 1px solid #e6e6e6;
+      border-radius: 8px;
+      background: white;
+    }
+    
+    .card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #1a1a1a;
+    }
+    
+    .card p {
+      color: #666;
+      line-height: 1.5;
+    }
+    
+    .list {
+      list-style: none;
+      margin: 24px 0;
+    }
+    
+    .list li {
+      padding: 8px 0;
+      color: #1a1a1a;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    
+    .faq {
+      margin: 32px 0;
+    }
+    
+    .faq dt {
+      font-weight: 600;
+      margin-top: 32px;
+      margin-bottom: 8px;
+      color: #1a1a1a;
+      font-size: 16px;
+    }
+    
+    .faq dt:first-child {
+      margin-top: 0;
+    }
+    
+    .faq dd {
+      color: #666;
+      line-height: 1.5;
+    }
+    
+    .faq dd a {
+      color: #1a1a1a;
+    }
+    
+    .final-cta {
+      text-align: center;
+      margin: 64px 0;
+      padding: 48px 32px;
+      background: #1a1a1a;
+      color: white;
+      border-radius: 8px;
+    }
+    
+    .final-cta h2 {
+      color: white;
+      margin-bottom: 16px;
+      font-size: 24px;
+    }
+    
+    .final-cta p {
+      margin-bottom: 24px;
+      font-size: 16px;
+      opacity: 0.9;
+    }
+    
+    .final-cta .btn {
+      background: white;
+      color: #1a1a1a;
+      border-color: white;
+      margin-right: 0;
+    }
+    
+    .final-cta .btn:hover {
+      background: #f0f0f0;
+    }
+    
+    .final-cta .small-text {
+      margin-top: 12px;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 48px 0;
+      border-top: 1px solid #e6e6e6;
+      margin-top: 64px;
+      color: #666;
+      font-size: 14px;
+    }
+    
+    footer a {
+      color: #1a1a1a;
+      text-decoration: none;
+    }
+    
+    footer a:hover {
+      text-decoration: underline;
+    }
+    
+    @media (max-width: 640px) {
+      .wrap {
+        padding: 0 20px;
+      }
+      
+      .hero h1 {
+        font-size: 32px;
+      }
+      
+      .hero .sub {
+        font-size: 18px;
+      }
+      
+      .value-props {
+        padding: 32px 24px;
+        margin: 48px -4px;
+      }
+      
+      .cards {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      
+      .card {
+        padding: 24px;
+      }
+      
+      .final-cta {
+        padding: 32px 24px;
+        margin: 48px -4px;
+      }
+    }
+  </style>
 
   <!-- PostHog (US Cloud) -->
   <script>
@@ -40,127 +368,163 @@
 <body>
   <div class="wrap">
     <header>
-      <div class="brand">Product Party</div>
+      <a href="/" class="brand">Product Party</a>
       <nav>
-        <a href="#inside">What's inside</a>
-        <a href="#demo">Try it</a>
-        <a href="#dashboard">Live dashboard</a>
-        <a href="/perks.html">Perks</a>
+        <a href="#what-inside">What's inside</a>
+        <a href="#faq">FAQ</a>
       </nav>
     </header>
 
     <div class="hero">
-      <div class="card pad">
-        <span class="kicker">Hands-on, self-serve</span>
-        <h1>Get users to first value this weekend</h1>
-        <p class="sub">A tiny starter pack that instruments activation in hours: events, live dashboard, and alert templates. Try the demo below—if it clicks, grab the pack.</p>
-        <div class="cta-row">
-          <a id="cta" class="btn primary" href="https://buy.stripe.com/test_7sY4gz37j6Nu9PH2C45Rm00" rel="noopener">
-            <span>Get the Starter Pack — $49</span>
-          </a>
-          <a class="btn" href="#demo">Try the live demo</a>
-          <span class="pill">No calls • No commitments • Refund if it's not useful</span>
-        </div>
+      <span class="kicker">For early-stage founders</span>
+      <h1>Skip the first-year mistakes</h1>
+      <p class="sub">Get the complete decision-making system I wish I'd had during my first startup—designed to turn assumptions into evidence in one week, not one month.</p>
+      
+      <div class="cta-row">
+        <a id="cta" class="btn" href="https://buy.stripe.com/test_7sY4gz37j6Nu9PH2C45Rm00" rel="noopener">
+          Get The Founder Startup Pack — $49
+        </a>
+        <a class="btn secondary" href="#what-inside">See what's inside</a>
+        <span class="pill">No calls • No commitments</span>
       </div>
+    </div>
 
-      <div class="card pad">
-        <h2 class="no-margin-top">You'll walk away with</h2>
-        <ul class="list">
-          <li>✅ A 4-event activation schema (+ "habit_action")</li>
-          <li>✅ A pre-built PostHog dashboard (funnel, time-to-value, retention)</li>
-          <li>✅ Two cohorts: <span class="tag">Fast activators</span> & <span class="tag">Stalled &lt;24h</span></li>
-          <li>✅ Zap templates for Slack pings & follow-ups</li>
-          <li>✅ A Notion lite playbook with 12 no-budget experiments</li>
-        </ul>
+    <!-- Value Proposition -->
+    <div class="value-props">
+      <h2>What you'll walk away with</h2>
+      <p>A practical, decision-first kit to get from idea → real users reaching first value. No jargon, no databases - just the smallest set of pages you'll reuse every week.</p>
+      
+      <div class="value-item">
+        <h3>🎯 Outcome Framework</h3>
+        <p>Set clear weekly success criteria and understand the process so trade-offs become simple decisions.</p>
+      </div>
+      
+      <div class="value-item">
+        <h3>✍️ Value Proposition Template</h3>
+        <p>Define your USER profile and craft a testable one-line value prop you can test in DMs, emails, and your hero section.</p>
+      </div>
+      
+      <div class="value-item">
+        <h3>📊 ICE Prioritization Guide</h3>
+        <p>Score features using Impact × Confidence × Ease method. Get a ranked top-3 list everyone can understand and disagree with constructively.</p>
+      </div>
+      
+      <div class="value-item">
+        <h3>🗂️ 6 Essential Templates</h3>
+        <p>Ready-to-use templates: Feature Card, Value Prop, Outreach Script, Feedback Note, Decision Log, and Weekly Review. No databases required.</p>
+      </div>
+      
+      <div class="value-item">
+        <h3>🗣️ Feedback Playbook</h3>
+        <p>Proven outreach scripts and structured 30-minute conversations focused on "What do you currently do?" not "Would this be useful?"</p>
+      </div>
+      
+      <div class="value-item">
+        <h3>🔁 Weekly Cadence System</h3>
+        <p>A lightweight, repeatable operating system: measure → learn → ship. Build sustainable practice that becomes your competitive advantage.</p>
       </div>
     </div>
 
     <!-- What's inside -->
-    <section id="inside" class="grid cols-3">
-      <div class="card pad">
-        <h2>Events that matter</h2>
-        <p class="muted">`sign_up` → `onboarding_started` → `onboarding_completed` → `first_value` (+ `habit_action`). Names map cleanly to your product's flows.</p>
-      </div>
-      <div class="card pad">
-        <h2>Dashboard, not a deck</h2>
-        <p class="muted">See activation rate, time-to-first-value, and week-1 habit retention out of the box—no BI setup.</p>
-      </div>
-      <div class="card pad">
-        <h2>Automation hooks</h2>
-        <p class="muted">Slack on <em>first value</em>. Email when users stall after 24h. Start nudging without building internal tooling.</p>
-      </div>
-    </section>
-
-    <!-- Demo (your existing buttons, but styled) -->
-    <section id="demo" class="card pad">
-      <h2>Try it live (no sign-up)</h2>
-      <p class="muted">These fire the same events you'll use. Watch them stream into your PostHog "Activity → Events".</p>
-      <div class="demo-btns">
-        <button onclick="posthog.capture('sign_up',{source:'landing',plan:'free'})">Fire sign_up</button>
-        <button onclick="posthog.capture('onboarding_started',{step:'profile'})">Fire onboarding_started</button>
-        <button onclick="posthog.capture('onboarding_completed',{time_to_complete:180})">Fire onboarding_completed</button>
-        <button onclick="posthog.capture('first_value',{value_type:'demo',time_from_signup:3})">Fire first_value</button>
-        <button onclick="posthog.capture('habit_action',{count_7d:3,count_28d:9})">Fire habit_action</button>
-        <button onclick="posthog.identify('user_'+Math.floor(Math.random()*100000),{plan:'free',source:'landing'})">Identify a user (fake id)</button>
+    <section id="what-inside" class="section">
+      <h2>What's inside</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>📂 Ready-to-duplicate templates</h3>
+          <p>Six essential Notion templates you can duplicate and fill immediately—Feature Cards, Feedback Notes, Decision Logs, and more.</p>
+        </div>
+        <div class="card">
+          <h3>🎙️ Structured user conversations</h3>
+          <p>Proven outreach scripts and 30-minute conversation guides that focus on current behavior, not hypothetical preferences.</p>
+        </div>
       </div>
     </section>
 
-    <!-- Live dashboard embed -->
-    <section id="dashboard" class="card pad">
-      <h2>Activation dashboard (live)</h2>
-      <p class="muted">This is the actual dashboard you'll get. If you're not seeing data yet, click a few demo buttons above.</p>
-      <!-- Replace with your PostHog PUBLIC dashboard link -->
-      <iframe src="POSTHOG_PUBLIC_DASHBOARD_URL" width="100%" height="640" loading="lazy" class="dashboard-iframe"></iframe>
+    <!-- Who this is for -->
+    <section class="section">
+      <div class="cards">
+        <div class="card">
+          <h3>👍 This is for you if:</h3>
+          <ul class="list">
+            <li>• You're a first-time founder navigating product decisions</li>
+            <li>• You've built something but aren't sure if it's what people want</li>
+            <li>• You're tired of generic startup advice that doesn't account for your constraints</li>
+            <li>• You want frameworks, not philosophy</li>
+            <li>• You're ready to make decisions based on evidence, not gut feeling</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>🚫 This isn't for you if:</h3>
+          <ul class="list">
+            <li>• You're looking for fundraising or legal advice</li>
+            <li>• You want detailed technical implementation guides</li>
+            <li>• You're past product-market fit and scaling quickly</li>
+            <li>• You prefer learning through trial and error</li>
+            <li>• You're not ready to test assumptions systematically</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
     <!-- FAQ -->
-    <section class="grid cols-2">
-      <div class="card pad">
-        <h2>Who is this for?</h2>
-        <ul class="list">
-          <li>• Early-stage founders who need a <em>working</em> activation view, not a 40-slide deck.</li>
-          <li>• PMs spinning up a side-project and want clean events + a simple dashboard.</li>
-          <li>• Newsletters/creators testing paid features with lightweight analytics.</li>
-        </ul>
-      </div>
-      <div class="card pad">
-        <h2>What tools does it use?</h2>
-        <p class="muted">PostHog (events + dashboard), your site (Vercel), and optional Zaps for nudges. Payment is via Stripe Payment Link.</p>
-      </div>
-    </section>
-
-    <section class="card pad">
-      <h2>FAQ</h2>
+    <section id="faq" class="section">
+      <h2>Common questions</h2>
       <dl class="faq">
-        <dt>Do I need PostHog first?</dt>
-        <dd>Yes, but setup is copy-paste. You already have it wired—nice.</dd>
+        <dt>How is this different from generic startup advice?</dt>
+        <dd>This focuses specifically on product decisions in your first year. No fundraising fluff or scaling tactics—just frameworks for figuring out what to build and whether people want it.</dd>
+        
+        <dt>Do I need specific tools to use this?</dt>
+        <dd>Just Notion (free account works fine). Everything is designed as simple templates you duplicate and fill out—no complex databases or integrations required.</dd>
+        
+        <dt>How long will it take to implement?</dt>
+        <dd>You can start using the first framework within an hour of downloading. The full system takes about a week to implement, working part-time.</dd>
+        
         <dt>What exactly do I get for $49?</dt>
-        <dd>The activation event schema, a sharable dashboard, two cohorts + an alert, a Notion playbook (Lite), and two Zap how-tos.</dd>
-        <dt>Refunds?</dt>
-        <dd>If it's not helpful in 7 days, email <a href="mailto:hey@mikewatson.us">hey@mikewatson.us</a> and I'll refund it.</dd>
+        <dd>A complete Notion workspace with 7 sections: Outcome framework, Value Prop template, ICE Prioritization guide, 6 ready-to-duplicate templates, Feedback Playbook with scripts, sustainable weekly cadence system, and a shared glossary for team alignment.</dd>
+        
+        <dt>What if it doesn't help?</dt>
+        <dd>Email me at <a href="mailto:hey@mikewatson.us">hey@mikewatson.us</a> and let me know what didn't work. I'm always looking to improve the pack based on real founder feedback.</dd>
+        
+        <dt>Is this just rehashed blog content?</dt>
+        <dd>No. This is new material I've developed specifically for early-stage founders. It's based on patterns I've seen across dozens of startups, not just theoretical frameworks.</dd>
       </dl>
     </section>
 
+    <!-- Final CTA -->
+    <section class="final-cta">
+      <h2>Ready to skip the costly mistakes?</h2>
+      <p>Join the founders who are building with confidence, not just conviction.</p>
+      <a class="btn" href="https://buy.stripe.com/test_7sY4gz37j6Nu9PH2C45Rm00" rel="noopener">
+        Get The Founder Startup Pack — $49
+      </a>
+      <div class="small-text">Digital delivery • Lifetime access</div>
+    </section>
+
     <footer>
-      <div>© Product Party • <a href="/perks.html">Founder perks</a></div>
+      <div>© 2025 Product Party • <a href="mailto:hey@mikewatson.us">Contact</a></div>
     </footer>
   </div>
 
   <!-- CTA tracking + keep UTMs to Stripe -->
   <script>
     (function () {
-      const cta = document.getElementById('cta');
-      const qs  = new URLSearchParams(location.search);
-      const u   = new URL(cta.href);
-      ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(k=>{
-        if (qs.get(k)) u.searchParams.set(k, qs.get(k));
-      });
-      cta.href = u.toString();
-      cta.addEventListener('click', function () {
-        posthog.capture('sign_up',
-          { source:'landing', plan:'starter_pack' },
-          { transport:'sendBeacon', send_instantly:true }
-        );
+      const ctaButtons = document.querySelectorAll('[href*="stripe.com"]');
+      const qs = new URLSearchParams(location.search);
+      
+      ctaButtons.forEach(cta => {
+        const u = new URL(cta.href);
+        ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(k=>{
+          if (qs.get(k)) u.searchParams.set(k, qs.get(k));
+        });
+        cta.href = u.toString();
+        
+        cta.addEventListener('click', function () {
+          posthog.capture('cta_clicked', {
+            source: 'landing_page',
+            product: 'founder_startup_pack',
+            price: 49
+          }, { transport: 'sendBeacon', send_instantly: true });
+        });
       });
     })();
   </script>
