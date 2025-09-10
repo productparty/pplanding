@@ -6,6 +6,7 @@
   <title>Welcome to Product Party — You're In!</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="Your Founder Startup Pack is on the way. Welcome to Product Party!" />
+  <meta name="robots" content="noindex, nofollow" />
   <link rel="canonical" href="https://founderstarterpack.productparty.us/success.html" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%23000%22/><text x=%2250%22 y=%2258%22 font-size=%2256%22 text-anchor=%22middle%22 fill=%22%23fff%22>P</text></svg>">
   
@@ -268,6 +269,88 @@
       text-decoration: underline;
     }
     
+    .delivery-section {
+      background: #f8f9fa;
+      padding: 32px;
+      border-radius: 8px;
+      margin: 32px 0;
+      text-align: center;
+    }
+
+    .delivery-section h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #1a1a1a;
+    }
+
+    .delivery-section p {
+      color: #666;
+      margin-bottom: 24px;
+    }
+
+    .guard-message {
+      background: #fff3cd;
+      border: 1px solid #ffeaa7;
+      color: #856404;
+      padding: 16px;
+      border-radius: 4px;
+      margin: 16px 0;
+      display: none;
+    }
+
+    .resend-form {
+      margin-top: 24px;
+      padding: 24px;
+      background: white;
+      border-radius: 8px;
+      border: 1px solid #e6e6e6;
+    }
+
+    .resend-form h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #1a1a1a;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #1a1a1a;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: #1a1a1a;
+    }
+
+    .tiny {
+      font-size: 14px;
+      margin-top: 8px;
+    }
+
+    .tiny.success {
+      color: #10b981;
+    }
+
+    .tiny.warn {
+      color: #f59e0b;
+    }
+
     @media (max-width: 640px) {
       .wrap {
         padding: 0 20px;
@@ -293,6 +376,15 @@
       .next-steps {
         padding: 24px;
         margin: 32px -4px;
+      }
+
+      .delivery-section {
+        padding: 24px;
+        margin: 24px -4px;
+      }
+
+      .resend-form {
+        padding: 20px;
       }
     }
   </style>
@@ -327,6 +419,16 @@
       <span class="kicker">You're all set!</span>
       <h1>Your pack is on the way</h1>
       <p class="sub">Check your email for the Notion workspace link and setup instructions. You'll be validating assumptions like a pro by this weekend.</p>
+    </div>
+
+    <!-- Delivery Section -->
+    <div class="delivery-section" id="deliverySection" style="display: none;">
+      <h3>🎯 Get your Founder Startup Pack</h3>
+      <p>Click the button below to duplicate the complete Notion workspace with all templates and frameworks.</p>
+      <a id="duplicateBtn" class="btn" href="#" target="_blank">Duplicate template</a>
+      <div class="guard-message" id="guardMessage">
+        <strong>Access restricted:</strong> This page is only available after completing your purchase. If you just purchased, please wait a moment for the page to load properly.
+      </div>
     </div>
 
     <div class="next-steps">
@@ -377,19 +479,118 @@
       </div>
     </section>
 
+    <!-- Having trouble section -->
+    <div class="resend-form">
+      <h4>Having trouble?</h4>
+      <p class="muted">If you didn't receive the email or need the link again, enter your email below and we'll send it right over.</p>
+      <form id="resendForm">
+        <div class="form-group">
+          <label for="email">Your email address</label>
+          <input type="email" id="email" name="email" required placeholder="your@email.com">
+        </div>
+        <button type="submit" class="btn">Send me the link</button>
+        <div id="resendStatus" class="tiny"></div>
+      </form>
+    </div>
+
     <footer>
       <div>© 2025 Product Party • <a href="mailto:support@mikewatson.us">Contact</a></div>
     </footer>
   </div>
 
   <script>
+    // ===== Configuration =====
+    const NOTION_DUPLICATE_URL = "https://www.notion.so/reminiscent-gecko-939/Product-Party-The-Founder-Starter-Pack-25b03d30603a80bbb439c6df0168f032?source=copy_link";
+
+    // ===== Checkout validation =====
+    const urlParams = new URLSearchParams(window.location.search);
+    const hasCheckoutMarker = urlParams.has('checkout') || urlParams.has('session_id');
+    
+    const deliverySection = document.getElementById('deliverySection');
+    const dupBtn = document.getElementById('duplicateBtn');
+    const guardMsg = document.getElementById('guardMessage');
+
+    function revealDelivery() {
+      deliverySection.style.display = 'block';
+      dupBtn.href = NOTION_DUPLICATE_URL;
+    }
+
+    if(hasCheckoutMarker){
+      revealDelivery();
+    } else {
+      dupBtn.setAttribute("disabled", "true");
+      dupBtn.href = "#";
+      guardMsg.style.display = "block";
+    }
+
+    // ===== Resend via lightweight webhook =====
+    // This uses Formspree by default. Create a form and replace ENDPOINT below.
+    const ENDPOINT = "https://formspree.io/f/your-form-id"; // TODO: replace
+
+    const form = document.getElementById("resendForm");
+    const statusEl = document.getElementById("resendStatus");
+
+    form.addEventListener("submit", async (e)=>{
+      e.preventDefault();
+      statusEl.textContent = "Sending…";
+
+      try{
+        const data = new FormData(form);
+        // Include the link we want to send
+        data.append("link", NOTION_DUPLICATE_URL);
+        data.append("source", "success.html");
+
+        const res = await fetch(ENDPOINT, { method: "POST", body: data });
+        if(res.ok){
+          statusEl.textContent = "Sent! Check your inbox in a minute.";
+          statusEl.className = "tiny success";
+          form.reset();
+        } else {
+          statusEl.textContent = "Hmm, couldn't send. Email agent@mikewatson.us and we'll reply quickly.";
+          statusEl.className = "tiny warn";
+        }
+      }catch(err){
+        statusEl.textContent = "Network error. Please email agent@mikewatson.us.";
+        statusEl.className = "tiny warn";
+      }
+    });
+
+    // ===== Tiny confetti to delight =====
+    function confetti(){
+      const count = 120; const defaults = {origin: {y: .7}};
+      function fire(particleRatio, opts){
+        const angle = Math.random()*360; const spread = 60 + Math.random()*20;
+        const size = 6 + Math.random()*6; const dist = 40 + Math.random()*30;
+        for(let i=0;i<particleRatio*count;i++){
+          const el = document.createElement('i');
+          el.style.position='fixed'; el.style.width=size+'px'; el.style.height=size+'px';
+          el.style.background = `hsl(${Math.floor(Math.random()*360)} 90% 60%)`;
+          el.style.left = (50+Math.cos(angle)*10)+'%';
+          el.style.top = (50+Math.sin(angle)*10)+'%';
+          el.style.pointerEvents='none'; el.style.opacity='1'; el.style.borderRadius='2px';
+          document.body.appendChild(el);
+          const dx = (Math.random()-.5)*spread, dy = -Math.random()*dist;
+          const vx = dx/30, vy = dy/30 + 1.2;
+          let life = 0; const tick = ()=>{
+            life++; el.style.transform = `translate(${vx*life}px, ${vy*life}px) rotate(${life*5}deg)`;
+            el.style.opacity = String(1 - life/120);
+            if(life<120) requestAnimationFrame(tick); else el.remove();
+          }; tick();
+        }
+      }
+      fire(.25, defaults); fire(.2, defaults); fire(.35, defaults);
+    }
+    if(hasCheckoutMarker) confetti();
+
     // Track successful purchase as first value
-    posthog.capture('first_value', { 
-      value_type: 'purchase', 
-      source: 'stripe',
-      product: 'founder_startup_pack',
-      price: 49
-    }, { transport: 'sendBeacon', send_instantly: true });
+    if(hasCheckoutMarker) {
+      posthog.capture('first_value', { 
+        value_type: 'purchase', 
+        source: 'stripe',
+        product: 'founder_startup_pack',
+        price: 9.99
+      }, { transport: 'sendBeacon', send_instantly: true });
+    }
   </script>
 </body>
 </html>
