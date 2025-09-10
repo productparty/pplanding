@@ -417,49 +417,46 @@
     <div class="hero">
       <div class="success-icon">🎉</div>
       <span class="kicker">You're all set!</span>
-      <h1>Your pack is on the way</h1>
-      <p class="sub">Check your email for the Notion workspace link and setup instructions. You'll be validating assumptions like a pro by this weekend.</p>
+      <h1>Welcome to Product Party!</h1>
+      <p class="sub">Your Founder Startup Pack is ready. Click below to access your complete Notion workspace with all templates and frameworks.</p>
     </div>
 
     <!-- Delivery Section -->
-    <div class="delivery-section" id="deliverySection" style="display: none;">
+    <div class="delivery-section">
       <h3>🎯 Get your Founder Startup Pack</h3>
       <p>Click the button below to duplicate the complete Notion workspace with all templates and frameworks.</p>
-      <a id="duplicateBtn" class="btn" href="#" target="_blank">Duplicate template</a>
-      <div class="guard-message" id="guardMessage">
-        <strong>Access restricted:</strong> This page is only available after completing your purchase. If you just purchased, please wait a moment for the page to load properly.
-      </div>
+      <a id="duplicateBtn" class="btn" href="https://www.notion.so/reminiscent-gecko-939/Product-Party-The-Founder-Starter-Pack-25b03d30603a80bbb439c6df0168f032?source=copy_link" target="_blank">Duplicate template</a>
     </div>
 
     <div class="next-steps">
       <h3>📬 What happens next</h3>
-      <p>Your complete Founder Startup Pack will arrive in your inbox within the next few minutes.</p>
+      <p>You now have access to your complete Founder Startup Pack. Here's how to get started:</p>
       
       <div class="step">
         <div class="step-number">1</div>
         <div class="step-content">
-          <strong>Check your email</strong> for the Notion workspace link and welcome guide
+          <strong>Click "Duplicate template"</strong> above to copy the workspace to your Notion account
         </div>
       </div>
       
       <div class="step">
         <div class="step-number">2</div>
         <div class="step-content">
-          <strong>Duplicate the templates</strong> into your own Notion workspace (takes 5 minutes)
+          <strong>Start with the Outcome framework</strong> to set your weekly success criteria
         </div>
       </div>
       
       <div class="step">
         <div class="step-number">3</div>
         <div class="step-content">
-          <strong>Start with the Outcome framework</strong> to set your weekly success criteria
+          <strong>Define your USER</strong> and craft your testable value proposition
         </div>
       </div>
       
       <div class="step">
         <div class="step-number">4</div>
         <div class="step-content">
-          <strong>Define your USER</strong> and craft your testable value proposition
+          <strong>Use the ICE Prioritization guide</strong> to rank your features and make data-driven decisions
         </div>
       </div>
     </div>
@@ -501,27 +498,6 @@
   <script>
     // ===== Configuration =====
     const NOTION_DUPLICATE_URL = "https://www.notion.so/reminiscent-gecko-939/Product-Party-The-Founder-Starter-Pack-25b03d30603a80bbb439c6df0168f032?source=copy_link";
-
-    // ===== Checkout validation =====
-    const urlParams = new URLSearchParams(window.location.search);
-    const hasCheckoutMarker = urlParams.has('checkout') || urlParams.has('session_id');
-    
-    const deliverySection = document.getElementById('deliverySection');
-    const dupBtn = document.getElementById('duplicateBtn');
-    const guardMsg = document.getElementById('guardMessage');
-
-    function revealDelivery() {
-      deliverySection.style.display = 'block';
-      dupBtn.href = NOTION_DUPLICATE_URL;
-    }
-
-    if(hasCheckoutMarker){
-      revealDelivery();
-    } else {
-      dupBtn.setAttribute("disabled", "true");
-      dupBtn.href = "#";
-      guardMsg.style.display = "block";
-    }
 
     // ===== Resend via lightweight webhook =====
     // This uses Formspree by default. Create a form and replace ENDPOINT below.
@@ -580,9 +556,14 @@
       }
       fire(.25, defaults); fire(.2, defaults); fire(.35, defaults);
     }
-    if(hasCheckoutMarker) confetti();
+    
+    // Always show confetti for a delightful experience
+    confetti();
 
-    // Track successful purchase as first value
+    // Track successful purchase as first value (optional - can be triggered by other means)
+    const urlParams = new URLSearchParams(window.location.search);
+    const hasCheckoutMarker = urlParams.has('checkout') || urlParams.has('session_id');
+    
     if(hasCheckoutMarker) {
       posthog.capture('first_value', { 
         value_type: 'purchase', 
