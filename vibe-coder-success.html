@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Welcome to The Vibe Coder's Feature Toolkit — You're In!</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Your Vibe Coder's Feature Toolkit is ready. Welcome to Product Party!" />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="canonical" href="https://vibecoderstoolkit.productparty.us/vibe-coder-success.html" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22%23000%22/><text x=%2250%22 y=%2258%22 font-size=%2256%22 text-anchor=%22middle%22 fill=%22%23fff%22>P</text></svg>">
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DQPV1KMKRB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-DQPV1KMKRB');
+  </script>
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.6;
+      color: #1a1a1a;
+      background: #ffffff;
+      font-size: 16px;
+    }
+    
+    .wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    
+    header {
+      padding: 32px 0;
+      border-bottom: 1px solid #e6e6e6;
+      margin-bottom: 48px;
+    }
+    
+    .brand {
+      font-weight: 600;
+      font-size: 20px;
+      color: #1a1a1a;
+      text-decoration: none;
+    }
+    
+    .brand:hover {
+      color: #666;
+    }
+    
+    nav {
+      margin-top: 16px;
+      display: flex;
+      gap: 24px;
+    }
+    
+    nav a {
+      text-decoration: none;
+      color: #666;
+      font-size: 15px;
+      transition: color 0.2s;
+    }
+    
+    nav a:hover {
+      color: #1a1a1a;
+    }
+    
+    .hero {
+      margin-bottom: 64px;
+      text-align: center;
+    }
+    
+    .hero h1 {
+      font-size: 42px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: #1a1a1a;
+      letter-spacing: -0.02em;
+    }
+    
+    .hero .sub {
+      font-size: 20px;
+      color: #666;
+      line-height: 1.5;
+      margin-bottom: 32px;
+    }
+    
+    .kicker {
+      display: inline-block;
+      color: #10b981;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .cta-row {
+      margin-bottom: 48px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 16px;
+      transition: all 0.2s;
+      border: 1px solid #1a1a1a;
+      background: #1a1a1a;
+      color: white;
+    }
+    
+    .btn:hover {
+      background: #333;
+      border-color: #333;
+    }
+    
+    .btn.secondary {
+      background: white;
+      color: #1a1a1a;
+      border-color: #ccc;
+    }
+    
+    .btn.secondary:hover {
+      border-color: #1a1a1a;
+    }
+    
+    .success-icon {
+      font-size: 4rem;
+      margin-bottom: 16px;
+    }
+    
+    .section {
+      margin: 64px 0;
+    }
+    
+    .section h2 {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 32px;
+      color: #1a1a1a;
+    }
+    
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+      margin-bottom: 32px;
+    }
+    
+    .card {
+      padding: 32px;
+      border: 1px solid #e6e6e6;
+      border-radius: 8px;
+      background: white;
+    }
+    
+    .card h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #1a1a1a;
+    }
+    
+    .card p {
+      color: #666;
+      line-height: 1.5;
+    }
+    
+    .list {
+      list-style: none;
+      margin: 24px 0;
+    }
+    
+    .list li {
+      padding: 8px 0;
+      color: #1a1a1a;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    
+    .muted {
+      color: #666;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    
+    .muted:last-child {
+      margin-bottom: 0;
+    }
+    
+    .muted a {
+      color: #1a1a1a;
+    }
+    
+    .next-steps {
+      background: #f8f9fa;
+      padding: 32px;
+      border-radius: 8px;
+      margin: 48px 0;
+    }
+    
+    .next-steps h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #1a1a1a;
+    }
+    
+    .next-steps p {
+      color: #666;
+      margin-bottom: 16px;
+    }
+    
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 0;
+    }
+    
+    .step-number {
+      background: #1a1a1a;
+      color: white;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+    
+    .step-content {
+      color: #1a1a1a;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 48px 0;
+      border-top: 1px solid #e6e6e6;
+      margin-top: 64px;
+      color: #666;
+      font-size: 14px;
+    }
+    
+    footer a {
+      color: #1a1a1a;
+      text-decoration: none;
+    }
+    
+    footer a:hover {
+      text-decoration: underline;
+    }
+    
+    .delivery-section {
+      background: #f8f9fa;
+      padding: 32px;
+      border-radius: 8px;
+      margin: 32px 0;
+      text-align: center;
+    }
+
+    .delivery-section h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #1a1a1a;
+    }
+
+    .delivery-section p {
+      color: #666;
+      margin-bottom: 24px;
+    }
+
+    .guard-message {
+      background: #fff3cd;
+      border: 1px solid #ffeaa7;
+      color: #856404;
+      padding: 16px;
+      border-radius: 4px;
+      margin: 16px 0;
+      display: none;
+    }
+
+    .resend-form {
+      margin-top: 24px;
+      padding: 24px;
+      background: white;
+      border-radius: 8px;
+      border: 1px solid #e6e6e6;
+    }
+
+    .resend-form h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #1a1a1a;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #1a1a1a;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: #1a1a1a;
+    }
+
+    .tiny {
+      font-size: 14px;
+      margin-top: 8px;
+    }
+
+    .tiny.success {
+      color: #10b981;
+    }
+
+    .tiny.warn {
+      color: #f59e0b;
+    }
+
+    @media (max-width: 640px) {
+      .wrap {
+        padding: 0 20px;
+      }
+      
+      .hero h1 {
+        font-size: 32px;
+      }
+      
+      .hero .sub {
+        font-size: 18px;
+      }
+      
+      .cards {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      
+      .card {
+        padding: 24px;
+      }
+      
+      .next-steps {
+        padding: 24px;
+        margin: 32px -4px;
+      }
+
+      .delivery-section {
+        padding: 24px;
+        margin: 24px -4px;
+      }
+
+      .resend-form {
+        padding: 20px;
+      }
+    }
+  </style>
+
+  <!-- PostHog (US Cloud) -->
+  <script>
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){
+    function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}
+    (p=t.createElement("script")).type="text/javascript",p.async=!0,p.src="https://us.i.posthog.com/static/array.js",
+    (r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);
+    var u=e;void 0!==a?u=e[a]=[]:a="posthog";u.people=u.people||[];
+    u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e};
+    u.people.toString=function(){return u.toString(1)+".people (stub)"},
+    o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing opt_in_capturing has_opted_out_capturing reset isFeatureEnabled onFeatureFlags group".split(" ");
+    for(n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  posthog.init('phc_3ACn7GrUe4Qzji0iXMvm7dmyL3XDx7G36SfUH9TQ4il', { api_host:'https://us.i.posthog.com', capture_pageview:true });
+  posthog.register({ project_env:'test', project_id:211328 });
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a href="https://vibecoderstoolkit.productparty.us/" class="brand">Product Party</a>
+      <nav>
+        <a href="https://vibecoderstoolkit.productparty.us/">Home</a>
+        <a href="https://productparty.substack.com">Newsletter</a>
+      </nav>
+    </header>
+
+    <div class="hero">
+      <div class="success-icon">🎯</div>
+      <span class="kicker">You're all set!</span>
+      <h1>Welcome to The Vibe Coder's Feature Toolkit!</h1>
+      <p class="sub">Your complete toolkit for building with intention, not just intuition. Click below to access your Notion workspace with all templates and frameworks.</p>
+    </div>
+
+    <!-- Delivery Section -->
+    <div class="delivery-section">
+      <h3>🎯 Get your Feature Toolkit</h3>
+      <p>Click the button below to duplicate the complete Notion workspace with all templates and frameworks.</p>
+      <a
+        id="duplicateBtn"
+        class="btn"
+        href="https://productparty.notion.site/The-Vibe-Coder-s-Feature-Toolkit-26703d30603a802eb2aedcc5d7ed2cfd?source=copy_link"
+        target="_blank"
+        rel="noopener"
+      >Duplicate template</a>
+    </div>
+
+    <div class="next-steps">
+      <h3>📬 What happens next</h3>
+      <p>You now have access to your complete Feature Toolkit. Here's how to get started:</p>
+      
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <strong>Click "Duplicate template"</strong> above to copy the workspace to your Notion account
+        </div>
+      </div>
+      
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <strong>Start with the USER Profile Template</strong> to define who you're building for
+        </div>
+      </div>
+      
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <strong>Use the ICE Prioritization Framework</strong> to rank features with evidence, not opinions
+        </div>
+      </div>
+      
+      <div class="step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <strong>Create Feature Cards</strong> to spec what you're actually building
+        </div>
+      </div>
+      
+      <div class="step">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <strong>Run validation conversations</strong> using the Feedback Playbook to get real user insights
+        </div>
+      </div>
+    </div>
+
+    <section class="section">
+      <h2>What's included in your toolkit</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>👤 USER Profile Template</h3>
+          <p>Stop building for "everyone" and define exactly who you're building for with this structured template.</p>
+        </div>
+        <div class="card">
+          <h3>📊 ICE Prioritization Framework</h3>
+          <p>Rank features with confidence using Impact × Confidence × Ease scoring instead of gut feelings.</p>
+        </div>
+        <div class="card">
+          <h3>📝 Feature Card Template</h3>
+          <p>Spec what you're actually building with clear acceptance criteria and success metrics.</p>
+        </div>
+        <div class="card">
+          <h3>🗣️ Feedback Playbook</h3>
+          <p>Get real user insights in 15 minutes with proven conversation scripts and validation techniques.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="cards">
+        <div class="card">
+          <h3>Questions or stuck?</h3>
+          <p class="muted">Email me at <a href="mailto:support@mikewatson.us">hey@mikewatson.us</a> if you hit any snags or want to discuss your specific product challenges.</p>
+          <p class="muted">I respond within a few hours during business days and genuinely enjoy helping developers build with intention.</p>
+        </div>
+        <div class="card">
+          <h3>📰 Keep learning</h3>
+          <p class="muted">Join 1,300+ product pros who get my weekly newsletter with insights on building products that actually matter.</p>
+          <p class="muted"><a href="https://productparty.substack.com">Subscribe to Product Party</a> for more practical frameworks and real-world product stories.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Having trouble section -->
+    <div class="resend-form">
+      <h4>Having trouble?</h4>
+      <p class="muted">If you didn't receive the email or need the link again, enter your email below and we'll send it right over.</p>
+      <form id="resendForm">
+        <div class="form-group">
+          <label for="email">Your email address</label>
+          <input type="email" id="email" name="email" required placeholder="your@email.com">
+        </div>
+        <button type="submit" class="btn">Send me the link</button>
+        <div id="resendStatus" class="tiny"></div>
+      </form>
+    </div>
+
+    <footer>
+      <div>© 2025 Product Party • <a href="mailto:support@mikewatson.us">Contact</a></div>
+    </footer>
+  </div>
+
+  <script>
+    // ===== Configuration =====
+    const NOTION_DUPLICATE_URL = "https://productparty.notion.site/The-Vibe-Coder-s-Feature-Toolkit-26703d30603a802eb2aedcc5d7ed2cfd?source=copy_link";
+
+    // ===== Resend via lightweight webhook =====
+    // This uses Formspree by default. Create a form and replace ENDPOINT below.
+    const ENDPOINT = "https://formspree.io/f/your-form-id"; // TODO: replace
+
+    const form = document.getElementById("resendForm");
+    const statusEl = document.getElementById("resendStatus");
+
+    form.addEventListener("submit", async (e)=>{
+      e.preventDefault();
+      statusEl.textContent = "Sending…";
+
+      try{
+        const data = new FormData(form);
+        // Include the link we want to send
+        data.append("link", NOTION_DUPLICATE_URL);
+        data.append("source", "vibe-coder-success.html");
+
+        const res = await fetch(ENDPOINT, { method: "POST", body: data });
+        if(res.ok){
+          statusEl.textContent = "Sent! Check your inbox in a minute.";
+          statusEl.className = "tiny success";
+          form.reset();
+        } else {
+          statusEl.textContent = "Hmm, couldn't send. Email agent@mikewatson.us and we'll reply quickly.";
+          statusEl.className = "tiny warn";
+        }
+      }catch(err){
+        statusEl.textContent = "Network error. Please email agent@mikewatson.us.";
+        statusEl.className = "tiny warn";
+      }
+    });
+
+    // ===== Tiny confetti to delight =====
+    function confetti(){
+      const count = 120; const defaults = {origin: {y: .7}};
+      function fire(particleRatio, opts){
+        const angle = Math.random()*360; const spread = 60 + Math.random()*20;
+        const size = 6 + Math.random()*6; const dist = 40 + Math.random()*30;
+        for(let i=0;i<particleRatio*count;i++){
+          const el = document.createElement('i');
+          el.style.position='fixed'; el.style.width=size+'px'; el.style.height=size+'px';
+          el.style.background = `hsl(${Math.floor(Math.random()*360)} 90% 60%)`;
+          el.style.left = (50+Math.cos(angle)*10)+'%';
+          el.style.top = (50+Math.sin(angle)*10)+'%';
+          el.style.pointerEvents='none'; el.style.opacity='1'; el.style.borderRadius='2px';
+          document.body.appendChild(el);
+          const dx = (Math.random()-.5)*spread, dy = -Math.random()*dist;
+          const vx = dx/30, vy = dy/30 + 1.2;
+          let life = 0; const tick = ()=>{
+            life++; el.style.transform = `translate(${vx*life}px, ${vy*life}px) rotate(${life*5}deg)`;
+            el.style.opacity = String(1 - life/120);
+            if(life<120) requestAnimationFrame(tick); else el.remove();
+          }; tick();
+        }
+      }
+      fire(.25, defaults); fire(.2, defaults); fire(.35, defaults);
+    }
+    
+    // Always show confetti for a delightful experience
+    confetti();
+
+    // Track successful purchase as first value (optional - can be triggered by other means)
+    const urlParams = new URLSearchParams(window.location.search);
+    const hasCheckoutMarker = urlParams.has('checkout') || urlParams.has('session_id');
+    
+    if(hasCheckoutMarker) {
+      posthog.capture('first_value', { 
+        value_type: 'purchase', 
+        source: 'stripe',
+        product: 'vibe_coder_toolkit',
+        price: 2.00
+      }, { transport: 'sendBeacon', send_instantly: true });
+    }
+  </script>
+</body>
+</html>
